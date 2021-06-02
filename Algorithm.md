@@ -202,7 +202,7 @@ bool f(i,j)
 
 https://leetcode-cn.com/problems/coin-change/
 
-![image-20200308143927561](LeetCode.assets/image-20200308143927561.png)
+![image-20200308143927561](Algorithm.assets/image-20200308143927561.png)
 
 动态规划的解决方法：
 
@@ -231,7 +231,7 @@ $$
 count = -1, when\  n=0
 $$
 
-![img](LeetCode.assets/e0fd2252775b89649ceb6e867ff0e546ec77621edb566693482c8588a98066b8-file_1583404923188.jfif)
+![img](Algorithm.assets/e0fd2252775b89649ceb6e867ff0e546ec77621edb566693482c8588a98066b8-file_1583404923188.jfif)
 
 2、建立备忘录削减无效分支计算
 
@@ -274,7 +274,7 @@ public:
 
 动态规划的最终结果并不优秀，本题还有采用贪心算法+深度优先搜索（dfs）的更好解决方法。
 
-![image-20200308145502019](LeetCode.assets/image-20200308145502019.png)
+![image-20200308145502019](Algorithm.assets/image-20200308145502019.png)
 
 
 
@@ -413,7 +413,7 @@ $dp[days[i]] = min(dp[days[i-1]] + costs[0], dp[days[i]-7] + costs[1], dp[days[i
 
 ## 295、数据流的中位数
 
-<img src="算法.assets/image-20210204150025117.png" alt="image-20210204150025117" style="zoom:50%;" />
+<img src="Algorithm.assets/image-20210204150025117.png" alt="image-20210204150025117" style="zoom:50%;" />
 
 ```c++
 class MedianFinder {
@@ -630,7 +630,7 @@ private:
 
 # 广度优先搜索
 
-![广度优先搜索示意图](LeetCode.assets/20180805163135680.gif)
+![广度优先搜索示意图](Algorithm.assets/20180805163135680.gif)
 
 广度优先搜索也成为宽度优先搜索，其策略为先生成的节点先扩张。在广度优先搜索中，树上的结点根据它们在树种的层次被搜索。
 
@@ -735,7 +735,7 @@ void BubbleSort(int array[], int size)
 //稳定性：稳定
 ```
 
-![img](算法.assets/849589-20171015223238449-2146169197-1596191498895.gif)
+![img](Algorithm.assets/849589-20171015223238449-2146169197-1596191498895.gif)
 
 ## 选择排序
 
@@ -769,7 +769,7 @@ void SelectSort(int array[], int size)
 //稳定性：不稳定
 ```
 
-![img](算法.assets/849589-20171015224719590-1433219824.gif)
+![img](Algorithm.assets/849589-20171015224719590-1433219824.gif)
 
 ## 插入排序
 
@@ -812,7 +812,7 @@ void InsertionSort(int array[],int size)
 }
 ```
 
-![img](算法.assets/849589-20171015225645277-1151100000.gif)
+![img](Algorithm.assets/849589-20171015225645277-1151100000.gif)
 
 ## 归并排序
 
@@ -826,7 +826,7 @@ void InsertionSort(int array[],int size)
 2. 对这两个子序列分别采用归并排序；
 3. 将两个排序好的子序列合并成一个最终的排序序列。
 
-![img](算法.assets/849589-20171015230557043-37375010.gif)
+![img](Algorithm.assets/849589-20171015230557043-37375010.gif)
 
 ```c
 #define ArrLen 20
@@ -880,7 +880,7 @@ void mergeSort(int arr[], int start, int end) {
 
 ## 快速排序
 
-![img](算法.assets/849589-20171015230936371-1413523412.gif)
+![img](Algorithm.assets/849589-20171015230936371-1413523412.gif)
 
 
 
@@ -1027,7 +1027,7 @@ k路归并方法，**败者树**
 3. 胜者作为新的参赛者进入败者树的上一层参加比赛，直至最后得到ls[0]即为此次归并的冠军（最小\大值）
 4. 将ls[0]添加到已排序队列的末尾，从ls[0]所在的归并段选择新的元素进入叶子节点，并重新比赛。
 
-![image-20210312140443850](算法.assets/image-20210312140443850.png)
+![image-20210312140443850](Algorithm.assets/image-20210312140443850.png)
 
 ```c++
 

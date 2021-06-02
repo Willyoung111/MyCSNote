@@ -834,7 +834,7 @@ ALTER TABLE tb_dept4 CHANGE COLUMN location VARCHAR(50) NULL;
 
 MYSQL由Server层和存储引擎层两部分
 
-<img src="数据库.assets/0d2070e8f84c4801adbfa03bda1f98d9.png" alt="img" style="zoom: 33%;" />
+<img src="DataBase.assets/0d2070e8f84c4801adbfa03bda1f98d9.png" alt="img" style="zoom: 33%;" />
 
 - Server层：涵盖MYSQL大多数核心服务功能，以及所有内置函数。所有**跨存储引擎功能**在这一层实现，如存储过程、触发器、视图。
 - 存储引擎层：负责数据的存储和提取。其架构模式是**插件式**的，支持InnoDB、MyISAM、Memory等多个存储引擎。**InnoDB从MySQL 5.5.5版本开始成为了默认存储引擎**

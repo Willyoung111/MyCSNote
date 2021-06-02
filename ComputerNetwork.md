@@ -20,7 +20,7 @@
 
 **分组交换**采用**存储转发**技术，通常将一个报文message划分为几个分组packet后再进行传送，每个分组的前面加上包含控制信息的首部header组成。
 
-![](计算机网络.assets/messgae_header_packet.jpg)
+![](ComputerNetwork.assets/messgae_header_packet.jpg)
 
 ​	**主机**：为用户进行信息处理，可以和其他主机通过网络交换信息。
 
@@ -62,7 +62,7 @@
 
 ​	**排队时延：分组在进入路由器后在输入队列排队等待处理的时间**
 
-![](计算机网络.assets/delay.jpg)
+![](ComputerNetwork.assets/delay.jpg)
 
 ##### 5、时延带宽积
 
@@ -88,9 +88,9 @@ $$
 
 OIS七层体系结构、TCP\IP四层、原理学习用五层
 
-![](计算机网络.assets/体系结构.jpg)
+![](ComputerNetwork.assets/体系结构.jpg)
 
-##### ![OSI七层功能](计算机网络.assets/OSI.png)
+##### ![OSI七层功能](ComputerNetwork.assets/OSI.png)
 
 ##### 1、应用层(application layer)
 
@@ -145,17 +145,17 @@ OIS七层体系结构、TCP\IP四层、原理学习用五层
 >
 > 
 
-![](计算机网络.assets/DataTransport.jpg)
+![](ComputerNetwork.assets/DataTransport.jpg)
 
 
 
 #### TCP/IP体系结构协议簇
 
-![TCP/IP协议簇示意](计算机网络.assets/Protocol.jpg)
+![TCP/IP协议簇示意](ComputerNetwork.assets/Protocol.jpg)
 
 ### 例：C/S工作方式说明
 
-![](计算机网络.assets/客户-服务器工作方式.jpg)
+![](ComputerNetwork.assets/客户-服务器工作方式.jpg)
 
 # 物理层
 
@@ -171,15 +171,15 @@ OIS七层体系结构、TCP\IP四层、原理学习用五层
 
 **全双工**：数据可以同时双向流通
 
-![](计算机网络.assets/屏蔽双绞线.jpg)
+![](ComputerNetwork.assets/屏蔽双绞线.jpg)
 
 ### 同轴电缆
 
-![](计算机网络.assets/同轴电缆.jpg)
+![](ComputerNetwork.assets/同轴电缆.jpg)
 
 ### 光缆
 
-![](计算机网络.assets/光纤.jpg)
+![](ComputerNetwork.assets/光纤.jpg)
 
 ### 无线微波传输
 
@@ -195,7 +195,7 @@ FDM:用户被分配到固定的频段，不同用户可以在相同的时间占�
 
 TDM:将时间划分为一段等长的时分复用帧。每个一时分复用的用户在每一个TDM帧中占用固定序号的时隙。
 
-![](计算机网络.assets/频分复用和时分复用.jpg)
+![](ComputerNetwork.assets/频分复用和时分复用.jpg)
 
 缺点：由于计算机数据的突发性，用户对自己占用通道的利用率不高。
 
@@ -247,7 +247,7 @@ CDM(Code Division Mulitiplexing)
 
 ### IP头
 
-![image-20210225123021825](计算机网络.assets/image-20210225123021825.png)
+![image-20210225123021825](ComputerNetwork.assets/image-20210225123021825.png)
 
 ### IP地址的分类
 
@@ -261,7 +261,7 @@ CDM(Code Division Mulitiplexing)
 
 如子网掩码255.255.255.0的表示方式如下
 
-![image-20210522154525352](计算机网络.assets/image-20210522154525352.png)
+![image-20210522154525352](ComputerNetwork.assets/image-20210522154525352.png)
 
 子网掩码的使用方法：当数据包到达时，路由器查看该数据包的目标地址，将其与每个子网的掩码进行按位AND操作，看结果是否对应于某个前缀。
 
@@ -273,7 +273,7 @@ CDM(Code Division Mulitiplexing)
 
 ## IPV6头
 
-![image-20210225135155950](计算机网络.assets/image-20210225135155950.png)
+![image-20210225135155950](ComputerNetwork.assets/image-20210225135155950.png)
 
 
 
@@ -329,7 +329,7 @@ UDP是无连接协议，它除了给应用程序提供发送数据包功能并�
 
 UDP传输段包括一个8字节的头，其大小为[8, 65515]
 
-![img](计算机网络.assets/78310a55b319ebc4c57a3f358c26cffc1e17161f)
+![img](ComputerNetwork.assets/78310a55b319ebc4c57a3f358c26cffc1e17161f)
 
 
 
@@ -363,7 +363,7 @@ TCP服务由发送端和接收端创建一种称为套接字（socket）的端�
 
 ### TCP段的头
 
-![TCP报文头](计算机网络.assets/TCP报文头.png)
+![TCP报文头](ComputerNetwork.assets/TCP报文头.png)
 
 每个TCP段的起始部分是一个固定格式的20字节头。因为TCP段之后还要进行加IP头，那么在TCP段中的数据最多可达65535-20-20=**65495**字节，其中第一个20是ip头的长度，第二个20是TCP头的长度。**没有任何数据的TCP段也是合法的。**
 
@@ -397,9 +397,9 @@ TCP中的流量控制是通过一个**可变大小**的滑动窗口来处理 的
 
 ### TCP的三次握手和四次挥手
 
- <img src="计算机网络.assets/1158196-20180301190534920-1824529844.png" alt="img" style="zoom:150%;" /> 
+ <img src="ComputerNetwork.assets/1158196-20180301190534920-1824529844.png" alt="img" style="zoom:150%;" /> 
 
-![image-20201218154057991](计算机网络.assets/image-20201218154057991.png)
+![image-20201218154057991](ComputerNetwork.assets/image-20201218154057991.png)
 
 
 
@@ -415,7 +415,7 @@ TCP建立连接时要传输三个数据包，俗称三次握手（Three-way Hand
 
 我们先来看一下TCP数据报的结构：
 
-![img](计算机网络.assets/1155315343-0.jpg)
+![img](ComputerNetwork.assets/1155315343-0.jpg)
 
 带阴影的几个字段需要重点说明一下：1) 序号：Seq（Sequence Number）序号占32位，用来标识从计算机A发送到计算机B的数据包的序号，计算机发送数据时对此进行标记。
 
@@ -427,7 +427,7 @@ TCP建立连接时要传输三个数据包，俗称三次握手（Three-way Hand
 
 使用 connect() 建立连接时，客户端和服务器端会相互发送三个数据包，请看下图：
 
-![img](计算机网络.assets/1155312401-1.jpg)
+![img](ComputerNetwork.assets/1155312401-1.jpg)
 
 客户端调用socket () 函数创建套接字后，因为没有建立连接，所以套接字处于**CLOSED**状态；服务器端调用 listen() 函数后，套接字进入**LISTEN**状态，开始监听客户端请求。这个时候，客户端开始发起请求：
 
@@ -485,7 +485,7 @@ server方面，超时时间内没有接收到client的ack包，会持续发送sy
 
 #### TCP连接的释放（四次挥手）
 
- ![img](计算机网络.assets/1158196-20180301191028587-1027330495.png) 
+ ![img](ComputerNetwork.assets/1158196-20180301191028587-1027330495.png) 
 
 1）当客户端发送完左右数据之后，应用结束，由客户端向服务器发送一个FIN段，并等待对应的ACK段返回，此时客户端为主动关闭，状态为**FIN WAIT 1**，表示应用没有数据要发送了。
 
@@ -576,7 +576,7 @@ TCP的**滑动窗口本质是描述接收方的TCP数据包缓冲区大小的数
 
 加法线斜率45°向上，而乘法线过原点，最终收敛至平衡点。
 
-![img](计算机网络.assets/1734701-20191128151354571-1852334064.png)
+![img](ComputerNetwork.assets/1734701-20191128151354571-1852334064.png)
 
 TCP的拥塞控制是基于AIMD法则实现的，其维持一个**拥塞窗口(congestion window)**，窗口大小表示任何时候发送端可以往网络发送的字节数。
 
@@ -584,7 +584,7 @@ TCP的拥塞控制是基于AIMD法则实现的，其维持一个**拥塞窗口(c
 
 慢速启动(slow start)：发送端采用一个很小的值（1~4）初始化拥塞窗口，然后发送端发送该初始窗口大小的数据，数据包经过一个往返时间（RTT）后被确认，每一个发送后被确认的段都增加一个允许发送的段，则每经过一个往返时间拥塞窗口增加一倍。
 
-![image-20201218144844554](计算机网络.assets/image-20201218144844554.png)
+![image-20201218144844554](ComputerNetwork.assets/image-20201218144844554.png)
 
 慢速启动很快就会使拥塞窗口达到一个可能引起网络拥塞的大小，这时，发送端为每个连接维持一个**慢启动阈值(slow start threshold)**，最初这个值被设置的任意高，可以达到流量控制窗口的大小，因此其不会限制连接速度。每当检测到丢包，如超时，慢启动阈值就被设置为当前拥塞窗口的一半。
 
@@ -596,11 +596,11 @@ TCP的拥塞控制是基于AIMD法则实现的，其维持一个**拥塞窗口(c
 
 发生了快速重传后，慢启动阈值就被设置为当前拥塞窗口的一半。并重新开始慢启动过程。1988 TCP Tahoe拥塞算法示意图如下。
 
-![image-20201218151113349](计算机网络.assets/image-20201218151113349.png)
+![image-20201218151113349](ComputerNetwork.assets/image-20201218151113349.png)
 
 TCP Reno版本中新增了**快速恢复(Fast recovery)**，其目的是保持拥塞窗口上运行确认始终，在快速重传发生时，把拥塞窗口值减半。并对重复确认计数，在快速重传后的一个往返时间后，丢失的包被确认，重复确认流停止，快速恢复模式退出，拥塞窗口被设置到新的慢启动阈值并开始按线性增长。快速恢复的机制避免了多次的慢速启动。
 
-![image-20201218153155799](计算机网络.assets/image-20201218153155799.png)
+![image-20201218153155799](ComputerNetwork.assets/image-20201218153155799.png)
 
 ## SYN FLOOD攻击
 
@@ -641,13 +641,13 @@ TCP Reno版本中新增了**快速恢复(Fast recovery)**，其目的是保持�
 
 通常用域名树来表示互联网的域名系统。
 
-![image-20210315165944746](计算机网络.assets/image-20210315165944746.png)
+![image-20210315165944746](ComputerNetwork.assets/image-20210315165944746.png)
 
 域名是由圆点分开一串单词或缩写组成的，每一个域名都对应一个惟一的IP地址，在Internet上域名与IP地址之间是一一对应的，DNS就是进行域名解析的服务器。DNS命名用于Internet等TCP/IP网络中，通过用户友好的名称查找计算机和服务。
 
 DNS服务器的管辖范围以“区”为单位，`区∈域`
 
-![image-20210316100459208](计算机网络.assets/image-20210316100459208.png)
+![image-20210316100459208](ComputerNetwork.assets/image-20210316100459208.png)
 
 **DNS查找过程**
 
@@ -666,7 +666,7 @@ HTTP中每个URL地址都由两部分组成，主机名（域名）+路径。HTT
 
 **HTTP报文有请求报文和响应报文两种。**
 
-![image-20201230165900771](计算机网络.assets/image-20201230165900771.png)
+![image-20201230165900771](ComputerNetwork.assets/image-20201230165900771.png)
 
 ### HTTP状态码
 
@@ -692,7 +692,7 @@ HTTP中每个URL地址都由两部分组成，主机名（域名）+路径。HTT
 
 ### HTTP1.0和HTTP1.1的区别
 
-![image-20210225135626890](计算机网络.assets/image-20210225135626890.png)
+![image-20210225135626890](ComputerNetwork.assets/image-20210225135626890.png)
 
 在HTTP1.0中，使用非持续连接的方法，每请求一个文档有两倍RTT的开销，在HTTP1.1版本中，使用了持续连接的方法，服务器在发送响应后在一段时间内继续保持这条连接。
 
@@ -715,7 +715,7 @@ HTTP响应报文中包含了cookie首部行；HTTP请求报文中包含cookie首
 
 **服务器返回响应数据**
 
-![img](计算机网络.assets/13949989-dcf024be2733e725.png)
+![img](ComputerNetwork.assets/13949989-dcf024be2733e725.png)
 
 ## 网络抓包原理
 
@@ -757,7 +757,7 @@ network address translation网络地址转换
 
 # 数据从网卡接受到应用程序处理，中间经历了什么
 
-![image-20210111221338914](计算机网络.assets/image-20210111221338914.png)
+![image-20210111221338914](ComputerNetwork.assets/image-20210111221338914.png)
 
 1、首先网卡接受到数据后进行一些简单的校验，如FCS校验，判断是否再传输过程中由于噪声影响而造成了信号失真，有的话就丢弃无用数据包。然后检查MAC地址的接收方是否是自己，是则奖数据保存在网卡缓冲区中，这个过程中CPU不知道有数据到达
 
@@ -771,7 +771,7 @@ network address translation网络地址转换
 
 # socket TCP传输中的数据传输流程
 
-![img](计算机网络.assets/733013-20171003141732271-400909384.png)
+![img](ComputerNetwork.assets/733013-20171003141732271-400909384.png)
 
 TCP协议栈维护了两个缓冲区：send_buffer 和 recv_buffer，合称为socket_buffer，它位于内核态内存空间中， 在发送端通过TCP发送的数据，需要先从用户内存空间写入到内核内存空间的send_buffer中，再由网卡通过硬件dma的方式从send_buffer拷贝数据并且发送到接收端的网卡，接收端网卡同样通过DMA的方式将数据拷贝到recv_buffer，之后接收端的应用程序通过recv的方式从内核态的recv_buffer拷贝数据到app_buffer
 
@@ -849,7 +849,7 @@ int bind(int sock, struct sockaddr *addr, socklen_t addrlen);
 
 2、addr为sockaddr结构体变量的指针，包含了family、port、ip和一个多余的空白8字节
 
-![img](计算机网络.assets/112P63295-0.jpg)
+![img](ComputerNetwork.assets/112P63295-0.jpg)
 
 其中family与socket建立时使用相同的值，port为监听端口号，ip为监听地址，特别的，当其设置为127.0.0.1时，表示监听本机，设置为0.0.0.0（null）时，表示监听所有ip。而最后的sin_zero，是为了保证sockaddr_in结构体和sockaddr保持一样的16位长度。
 
@@ -939,7 +939,7 @@ socket的缓冲区涉及到数据在网络上的传输途径。每个socket被�
 
 相应的，read()/recv()函数也是如此，他们从接收缓冲区中读取数据。
 
-![TCP socket的I/O缓冲区示意图](计算机网络.assets/1149355056-0.jpg)
+![TCP socket的I/O缓冲区示意图](ComputerNetwork.assets/1149355056-0.jpg)
 
 ## TCP的阻塞模式
 

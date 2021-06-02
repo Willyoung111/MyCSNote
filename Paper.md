@@ -198,5 +198,5 @@ Algorithm 2: O(C*(N+511)) = O(N)
 
 # SIMPLE ONLINE AND REALTIME TRACKING WITH A DEEP ASSOCIATION METRIC(DeepSort)
 
-![deepsoryt](Paper阅读.assets/deepsoryt.png)
+![deepsoryt](Paper.assets/deepsoryt.png)
 
