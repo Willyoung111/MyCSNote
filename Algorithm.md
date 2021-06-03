@@ -626,6 +626,54 @@ private:
 }
 ```
 
+## 525 连续数组
+
+![image-20210603102054150](Algorithm.assets/image-20210603102054150.png)
+
+
+
+使用哈希表和前缀和
+
+维护一个前缀和preSum，其值为num(0) - num(1)，其键为改前缀和第一次出现的下标位置。
+
+公式如下，设从0到i的区间内，0的数量为ai，1的数量为bi，则preSumi = ai - bi，
+
+同理，从0到j的区间内，0的数量为aj，1的数量为bj，则preSumj = aj - bj，
+
+当满足preSumi == preSumj时，即有ai+aj == bi + bj
+
+那么通过哈希表，即可得到最长的连续子数组，代码如下
+
+```cpp
+class Solution {
+public:
+    int findMaxLength(vector<int>& nums) {
+        //使用哈希表，前缀和，键为num(0) - num(1)，值为下标，
+        //若m[i]已经有值，说明该值到当前下标段满足条件，每次只记录最左侧的下标
+
+        unordered_map<int ,int> m;
+        int preSum = nums[0] == 0 ? 1 : -1;
+        m[0] = -1;
+        m[preSum] = 0;
+        int maxLen = 0;
+
+        for(int i = 1; i < nums.size(); i++)
+        {
+            preSum = nums[i] == 0 ? (preSum + 1) : (preSum - 1);
+            if(m.find(preSum) != m.end())
+            {
+                maxLen = max(maxLen, i - m[preSum]);
+            }
+            else
+            {
+                m[preSum] = i;
+            }
+        }
+        return maxLen;
+    }
+};
+```
+
 
 
 # 广度优先搜索
