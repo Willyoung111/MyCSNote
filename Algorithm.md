@@ -674,6 +674,60 @@ public:
 };
 ```
 
+# 双指针
+
+## 160 相交链表
+
+![image-20210604102640727](Algorithm.assets/image-20210604102640727.png)
+
+假设链表A的不重复长度为a，链表B的不重复长度为b，两链表的重复长度为c，
+
+则遍历一遍A的长度为a+c，遍历一遍B的长度为b+c
+
+当A到达结尾后，从B的头部开始继续遍历长度b，则最终遍历长度为a+b+c
+
+同理B也一样，两个链表同时遍历长度a+b+c，并且会到达第一个相同节点。
+
+当没有相同节点时，即c等于0，最终会同时到达链表结尾null
+
+```cpp
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* pA = headA;
+        ListNode* pB = headB;
+
+        while(pA != pB)
+        {
+            if(pA->next == nullptr && pB->next == nullptr)
+            {
+                return nullptr;
+            }
+            
+            if(pA->next != nullptr)
+            {
+                pA = pA->next;
+            }
+            else
+            {
+                pA = headB;
+            }
+
+            if(pB->next != nullptr)
+            {
+                pB = pB->next;
+            }
+            else
+            {
+                pB = headA;
+            }
+        }
+
+        return pA;
+    }
+};
+```
+
 
 
 # 广度优先搜索
@@ -726,6 +780,60 @@ void BFS()
 # 二分查找
 
 # 栈
+
+## 160 相交链表
+
+![image-20210604102640727](Algorithm.assets/image-20210604102640727.png)
+
+时间复杂度O(n+m)
+
+空间复杂度O(n+m)
+
+```cpp
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        //栈
+        stack<ListNode*> stA, stB;
+
+        ListNode* pA = headA;
+        ListNode* pB = headB;
+
+        while(pA)
+        {
+            stA.push(pA);
+            pA = pA->next;
+        }
+
+        while(pB)
+        {
+            stB.push(pB);
+            pB = pB->next;
+        }
+
+        ListNode *startNode = nullptr;
+        while(!stA.empty() && !stB.empty())
+        {
+            if(stA.top() == stB.top())
+            {
+                startNode = stA.top();
+                stA.pop();
+                stB.pop();
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        return startNode;
+    }
+};
+```
+
+
+
+# 链表
 
 # 位运算
 
