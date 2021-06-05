@@ -835,6 +835,42 @@ public:
 
 # 链表
 
+## 203 Remove Linked List Elements
+
+![image-20210605105200261](Algorithm.assets/image-20210605105200261.png)
+
+只需要注意当删除的结点是头结点的情况即可。可以通过创建一个伪头部来实现。
+
+```cpp
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        //1.remove the head
+        //2.remove others
+
+        ListNode preHead(0, head);
+
+        ListNode* p = &preHead;
+
+        while(p->next)
+        {
+            if(p->next->val == val)
+            {
+                p->next = p->next->next;
+            }
+            else
+            {
+                p = p->next;
+            }
+        }
+
+        return preHead.next;
+    }
+};
+```
+
+
+
 # 位运算
 
 # 排序
