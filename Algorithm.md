@@ -278,6 +278,69 @@ public:
 
 
 
+## 474 ones and zeros
+
+![image-20210606180132845](Algorithm.assets/image-20210606180132845.png)
+
+与背包问题十分相似，背包问题是一个二维的dp，包括物品和重量。该题则是有两个限制条件，是一个三维的dp
+
+`dp[i][j][k]`表示前i个字符串包含j个0,k个1的最大子集大小。
+
+那么对于第i个字符串，设其0数量为zeros，1数量为ones
+
+则当`j < zeros || k < ones`，第i个字符串不能取
+
+当`j >= zeros && k >= ones`，第i个字符串可以取也可以不取，满足如下公式
+
+ 
+$$
+dp[i][j][k] = \begin{cases}
+dp[i-1][j][k], j < zeros | k < ones\\
+max(dp[i-1][j][k], dp[i-1][j-zeros][k-ones]), j >= zeros & k >= ones \\
+\end{cases}
+$$
+
+
+同时因为dp[i]只和dp[i-1]有关，可以优化掉一个维度
+
+```cpp
+class Solution {
+public:
+    vector<int> getZerosOnes(string& str) {
+        vector<int> zerosOnes(2);
+        int length = str.length();
+        for (int i = 0; i < length; i++) {
+            zerosOnes[str[i] - '0']++;
+        }
+        return zerosOnes;
+    }
+
+    int findMaxForm(vector<string>& strs, int m, int n) {
+        int length = strs.size();
+        vector<vector<vector<int>>> dp(length + 1, vector<vector<int>>(m + 1, vector<int>(n + 1)));
+        for (int i = 1; i <= length; i++) {
+            vector<int>&& zerosOnes = getZerosOnes(strs[i - 1]);
+            int zeros = zerosOnes[0], ones = zerosOnes[1];
+            for (int j = 0; j <= m; j++) {
+                for (int k = 0; k <= n; k++) {
+                    dp[i][j][k] = dp[i - 1][j][k];
+                    if (j >= zeros && k >= ones) {
+                        dp[i][j][k] = max(dp[i][j][k], dp[i - 1][j - zeros][k - ones] + 1);
+                    }
+                }
+            }
+        }
+        return dp[length][m][n];
+    }
+};
+```
+
+空间复杂度：O(lmn + L)
+
+时间复杂度：O(mn)
+
+
+
 ## 714、[Best Time to Buy and Sell Stock with Transaction Fee](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/)
 
 use two state equations
