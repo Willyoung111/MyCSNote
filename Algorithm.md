@@ -292,7 +292,7 @@ public:
 
 当`j >= zeros && k >= ones`，第i个字符串可以取也可以不取，满足如下公式
 
- 
+
 $$
 dp[i][j][k] = \begin{cases}
 dp[i-1][j][k], j < zeros | k < ones\\
@@ -338,6 +338,86 @@ public:
 空间复杂度：O(lmn + L)
 
 时间复杂度：O(mn)
+
+
+
+## 494 Target Sum
+
+![image-20210607140027641](Algorithm.assets/image-20210607140027641.png)
+
+这题可以用暴力的回溯法完成，其时间复杂度为`O(2^n)`
+
+使用动态规划完成，该题可以转化为典型的背包问题。
+
+背包问题是在一系列元素中选择某些元素，达到目标结果。
+
+该题初看需要选择为元素添加+或者-，但实际上只有两张选择，因此可以只选择哪些元素为-，剩下的就都是+
+
+如此转化为背包问题。
+
+设数组的总和为`sum`，标记为-的元素和为`neg`，注意neg只是标记为负号，不是负数。
+
+那么满足下式
+$$
+(sum - neg) - neg = target
+$$
+
+$$
+neg = (sum - target) / 2
+$$
+
+推到状态转移方程
+
+`dp[i][j]`表示前i个元素中，和为j的不同表达式的数目。
+
+起始状态，i = 0时，没有任何元素可以选取时，元素和只能是0，且只有一种方案数
+$$
+dp[0][j] = \begin{cases}
+1, j = 0 \\
+0, j >= 1 \\
+\end{cases}
+$$
+转移方程
+$$
+dp[i][j] = \begin{cases}
+dp[i-1][j], j < nums[i] \\
+dp[i-1][j] + dp[i-1][j - nums[i]], j >= nums \\
+\end{cases}
+$$
+最后，因为`dp[i][]`只与`dp[i-1][]`有关，因此可以使用滚动数组的方法来减小空间复杂度
+
+```cpp
+class Solution {
+public:
+    int findTargetSumWays(vector<int>& nums, int target) {
+        int sum = 0;
+        for(auto &num : nums)
+        {
+            sum += num;
+        }
+        int diff = sum - target;
+        if(diff < 0 || diff % 2 != 0)
+        {
+            return 0;
+        }
+
+        int neg = diff/2;
+
+        vector<int> dp(neg+1, 0);
+        dp[0] = 1;
+
+        for(auto num : nums)
+        {
+            for(int j = neg; j >= num; j--)
+            {
+                dp[j] += dp[j-num];
+            }
+        }
+
+        return dp[neg];
+    }
+};
+```
 
 
 
