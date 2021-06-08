@@ -1,9 +1,18 @@
 
 
+# 基本配置
+
+```
+git config --global user.name "YWYSurFace"
+git config --global user.email "937577027@qq.com"
+```
+
+
+
 # 为GITHUB添加SSH Keys
 
 ```shell
-ssh-keygen -t ed25519 -C "your_email@example.com"
+ssh-keygen -t ed25519 -C "937577027@qq.com"
 
 eval `ssh-agent -s`
 

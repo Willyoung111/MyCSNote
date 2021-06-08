@@ -360,7 +360,6 @@ public:
 那么满足下式
 $$
 (sum - neg) - neg = target
-
 $$
 
 $$
@@ -538,6 +537,70 @@ dp[days[i]]表示旅行到目前天数所花费的最小票价
 $dp[days[i]] = min(dp[days[i-1]] + costs[0], dp[days[i]-7] + costs[1], dp[days[i]-30] + costs[2])$
 
 将两天之间的所有其他未在表中出现的天数都设置为其出现的最近一天的天数的消费
+
+## 1049 Last Stone Weight Ⅱ
+
+![image-20210608104030819](Algorithm.assets/image-20210608104030819.png)
+
+转化为背包问题
+
+将所有石子分为两堆，两堆石子重量之和的差的最小值即最后剩下石头的最小可能重量。
+
+则可以对石头重量取+或-，设取-的石子重量之和为neg
+
+则找到满足`neg < sum / 2`的最大的neg，结果即`sum - 2 * neg`
+
+那么转化为背包容量为`sum/2`的背包问题
+
+定义`dp[i+1][j]`表示前i个石头能否凑出重量j
+
+则初始状态
+
+`dp[0][0] = true` 其余`dp[0][] = false`
+
+状态转移方程
+$$
+dp[i+1][j] = \begin{cases}
+dp[i][j], j<stones[i] \\
+dp[i][j] \vee dp[i][j-stomes[i]], j >= stones[i] \\
+\end{cases}
+$$
+求出$ dp[n][] $后，所有为真的$ dp[n][j] $中，最大的 j 即为$ neg $能取到的最大值。代入$ sum−2⋅neg $中即得到最后一块石头的最小重量。
+
+
+
+同样可以用滚动数组来进行空间复杂度优化，倒序遍历即可
+
+```cpp
+class Solution {
+public:
+    int lastStoneWeightII(vector<int>& stones) {
+        //该问题可以转化为将石子分成两堆的背包问题，最后剩下的最小重量就是两堆石子总和的差
+        //背包容量为sum / 2
+		int sum = accumulate(stones.begin(), stones.end(), 0);
+        int n = stones.size();
+        int m = sum / 2;
+
+        vector<int> dp(m+1, 0);
+        dp[0] = true;
+        for(auto &stones : stones)
+        {
+            for(int j = m; j >=0; j--)
+            {
+                dp[j] = dp[j] || dp[j-stone];
+            }
+        }
+        
+        for (int j = m;; --j) {
+            if (dp[j]) {
+                return sum - 2 * j;
+            }
+        }   
+    }
+};
+```
+
+
 
 # 中位数
 
