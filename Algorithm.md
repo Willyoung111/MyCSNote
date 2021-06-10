@@ -419,6 +419,88 @@ public:
 };
 ```
 
+## 879 盈利计划
+
+![image-20210610104226893](Algorithm.assets/image-20210610104226893.png)
+
+背包问题，三维dp
+
+`dp[i][j][k]`表示前i种工作，工作成员总数j，产生k利润的计划总数
+
+工作总数`len`则最后结果为
+$$
+\sum_{i=0}^n{dp[len][i][minProfit]}
+$$
+初始状态：
+
+`dp[0][0][0] = 1`
+
+状态转移方程
+
+相关的解释：
+
+第一种情况，当前可以用的人数上限不足以完成第i个工作，则不会新增计划。
+
+当前工作可以安排时，减少可用人数上限，注意因为要求时至少盈利，当盈利超过时也满足要求，因此是`max(0, k-profit[i])`
+$$
+dp[i][j][k] = \begin{cases}
+dp[i-1][j][k], j < group[i]\\
+dp[i-1][j][k] + dp[i-1][j-group[i]][max(0, k-profit[i])], j >= group[i] \\
+\end{cases}
+$$
+
+```cpp
+class Solution {
+public:
+    int profitableSchemes(int n, int minProfit, vector<int>& group, vector<int>& profit) {
+        int len = group.size(), MOD = (int)1e9 + 7;
+        vector<vector<vector<int>>> dp(len + 1, vector<vector<int>>(n + 1, vector<int>(minProfit + 1)));
+        dp[0][0][0] = 1;
+        for (int i = 1; i <= len; i++) {
+            int members = group[i - 1], earn = profit[i - 1];
+            for (int j = 0; j <= n; j++) {
+                for (int k = 0; k <= minProfit; k++) {
+                    if (j < members) {
+                        dp[i][j][k] = dp[i - 1][j][k];
+                    } else {
+                        dp[i][j][k] = (dp[i - 1][j][k] + dp[i - 1][j - members][max(0, k - earn)]) % MOD;
+                    }
+                }
+            }
+        }
+        int sum = 0;
+        for (int j = 0; j <= n; j++) {
+            sum = (sum + dp[len][j][minProfit]) % MOD;
+        }
+        return sum;
+    }
+};
+```
+
+又因为`dp[i][][]`只与`dp[i-1][][]`有关，因此可以进行空间复杂度优化，并更改遍历顺序为逆序
+
+```cpp
+class Solution {
+public:
+    int profitableSchemes(int n, int minProfit, vector<int>& group, vector<int>& profit) {
+        vector<vector<int>> dp(n + 1, vector<int>(minProfit + 1));
+        for (int i = 0; i <= n; i++) {
+            dp[i][0] = 1;
+        }
+        int len = group.size(), MOD = (int)1e9 + 7;
+        for (int i = 1; i <= len; i++) {
+            int members = group[i - 1], earn = profit[i - 1];
+            for (int j = n; j >= members; j--) {
+                for (int k = minProfit; k >= 0; k--) {
+                    dp[j][k] = (dp[j][k] + dp[j - members][max(0, k - earn)]) % MOD;
+                }
+            }
+        }
+        return dp[n][minProfit];
+    }
+};
+```
+
 
 
 ## 714、[Best Time to Buy and Sell Stock with Transaction Fee](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/)
