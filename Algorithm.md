@@ -198,6 +198,49 @@ bool f(i,j)
         	f(i+1,j+1)
 ```
 
+
+
+## 279 完全平方数
+
+![image-20210611103243306](Algorithm.assets/image-20210611103243306.png)
+
+典型的动态规划问题
+
+设`dp[i]`为和为 `i` 的完全平方数的 **最少数量**
+
+初始状态
+$$
+dp[0] = 0
+$$
+则dp[i]可以划分为相似的子问题
+$$
+dp[i] = 1 + \min_{j=1}^{j \le \sqrt{i}}{dp[i-j^2]}
+$$
+
+```cpp
+class Solution {
+public:
+    int numSquares(int n) {
+        //一个数组，长度为n开方向下取整
+        int len = sqrt(n);
+        vector<int> dp(n+1,0);
+        for(int i = 1; i <=n;i++)
+        {
+            int minN = n;
+            for(int j = 1; j <= sqrt(i); j++)
+            {
+                minN = min(minN, dp[i - j*j]);
+            }
+            dp[i] = 1 + minN;
+        }
+
+        return dp[n];
+    }
+};
+```
+
+
+
 ## 322、零钱兑换
 
 https://leetcode-cn.com/problems/coin-change/
@@ -418,6 +461,16 @@ public:
     }
 };
 ```
+
+## 518 零钱兑换Ⅱ
+
+![image-20210610112135000](Algorithm.assets/image-20210610112135000.png)
+
+背包问题，区别在于每个元素可以选用无数次
+
+`dp[i]`表示金额之和为x的组合数，目标为求`dp[amount]`
+
+
 
 ## 879 盈利计划
 
