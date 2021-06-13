@@ -1121,6 +1121,48 @@ void BFS()
 
 # 二分查找
 
+278 第一个错误的版本
+
+![image-20210613180004293](Algorithm.assets/image-20210613180004293.png)
+
+```cpp
+// The API isBadVersion is defined for you.
+// bool isBadVersion(int version);
+
+class Solution {
+public:
+    int firstBadVersion(int n) {
+        int start = 1;
+        int end = n;
+        
+        int mid;
+        while(start <= end)
+        {
+            mid = start + (end - start)/2;
+            if(isBadVersion(mid))
+            {
+                if(mid == 1 || !isBadVersion(mid-1))
+                {
+                    break;
+                }
+                else
+                {
+                    end = mid; 
+                }
+            }
+            else
+            {
+                start = mid + 1;
+            }
+        }
+
+        return mid;
+    }
+};
+```
+
+简单二分法
+
 # 栈
 
 ## 160 相交链表
