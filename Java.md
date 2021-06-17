@@ -84,3 +84,210 @@ IoC的目的是降低对象之间的直接耦合
 ![image-20210616161336580](Java.assets/image-20210616161336580.png)
 
 ## Spring AOP 面向切面编程
+
+
+
+## XML管理对象（Bean）
+
+- 必须有默认构造函数
+
+
+
+## pom.xml配置文件
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.imooc.spring</groupId>
+    <artifactId>ioc</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>15</maven.compiler.target>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>aliyun</id>
+            <name>aliyun</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.3.8</version>
+        </dependency>
+    </dependencies>
+</project>
+```
+
+
+
+### 三种配置方式
+
+#### 基于XML配置
+
+applicationContext.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="apple2" class="com.imooc.spring.ioc.entity.Apple">	
+	<!-- 没有constructor-arg则代表调用默认构造方法实例化-->
+        <constructor-arg name="title" value="红富士"/>
+        <constructor-arg name="origin" value="欧洲"/>
+        <constructor-arg name="color" value="红色"/>
+        <constructor-arg name="price" value="19.8"/>
+    </bean>
+
+    <bean id="sweetApple" class="com.imooc.spring.ioc.entity.Apple">
+        <!-- IoC容器自动利用反射机制运行时调用setXXX方法为属性赋值-->
+        <property name="title" value="红富士"/>
+        <property name="origin" value="欧洲"/>
+        <property name="color" value="红色"/>
+        <property name="price" value="19.8"/>
+    </bean>
+
+
+    <bean id="lily" class="com.imooc.spring.ioc.entity.Child">
+        <property name="name" value="莉莉"/>
+        <!-- 利用ref setter实现对象参数注入-->
+        <property name="apple" ref="sweetApple"/>
+    </bean>
+
+    <bean id="andy" class="com.imooc.spring.ioc.entity.Child">
+        <!-- 利用构造方法注入对象-->
+        <constructor-arg name="name" value="安迪"/>
+        <constructor-arg name="apple" ref="sourApple"/>
+    </bean>
+    
+	<!--    利用静态工厂获取对象-->
+    <bean id="apple4" class="com.imooc.spring.ioc.factory.AppleStaticFactory"
+          factory-method="createSweetApple"/>
+
+	<!--    利用工厂实例方法创建对象-->
+    <bean id="factoryInstance" class="com.imooc.spring.ioc.factory.AppleFactoryInstance"/>
+    <bean id="apple5" factory-bean="factoryInstance" factory-method="createSweetApple"/>
+    
+    
+</beans>
+```
+
+静态工厂的好处，可以在创建函数中进行一些其他的需要的操作，如日志输出等。
+
+随着Spring发展工厂模式也较少使用了
+
+
+
+**constructor-arg和property区别**
+
+- constructor-arg调用构造函数创建实例
+- property调用setXXX方法为属性赋值
+
+
+
+**bean标签中id和name**
+
+相同点
+
+- bean id 和 name都是设置对象在IoC容器中唯一标识
+- 两者在同一个配置文件中都不允许重复
+- 两者允许在多个配置文件中出现重复，新对象覆盖旧对象
+
+不同点
+
+- id要求更为严格，一次只能定义一个对象标识（推荐）
+- name更为宽松，一次允许**定义多个对象标识**
+- id与name的命名要求有意义，按驼峰命名书写
+
+**一般只使用id**
+
+```java
+//创建IoC容器并根据配置文件创建对象
+ApplicationContext context = new ClassPathXmlApplcationContext("classpath:applicationContext.xml");
+```
+
+![image-20210617110219662](Java.assets/image-20210617110219662.png)
+
+classpath指编译后的运行目录target下的classes
+
+![image-20210617110326009](Java.assets/image-20210617110326009.png)
+
+##### 注入集合对象
+
+```xml
+<bean id="" class="">
+    <propertyname="someList">
+        <list>
+            <value>123</value>
+            <ref bean="beanId"></ref>
+        </list>
+    </propertyname>
+</bean>
+
+<bean id="" class="">
+    <propertyname="someSet">
+        <set>
+            <value>123</value>
+            <ref bean="beanId"></ref>
+        </set>
+    </propertyname>
+</bean>
+
+<bean id="" class="">
+    <propertyname="someMap">
+        <map>
+            <entry key="k1" value="v1"></entry>
+            <entry key="k2" value-ref="beanId"></entry>
+        </map>
+    </propertyname>
+</bean>
+
+<!--Properties的键和值必须是字符串-->
+<bean id="" class="">
+    <propertyname="someProperties">
+        <props>
+            <prop key="k1">v1</entry>
+            <prop key="k2">v2</entry>
+        </props>
+    </propertyname>
+</bean>
+```
+
+
+
+##### 查看容器内对象
+
+```java
+String[] beanNames = context.getBeanDefinitionNames();
+for(String beanName:beanNames){
+    System.out.println(beanName);
+    System.out.println("type: " + context.getBean(beanName).getClass().getName());
+    System.out.println("context: " + context.getBean(beanName).toString());
+}
+```
+
+
+
+##### bean scope属性
+
+- bean scope属性用于决定对象何时被创建与作用范围
+- bean scope配置将影响容器内对象的数量
+- bean scope默认值singleton(单例），指全局共享同
+  一个对象实例
+
+#### 基于注解配置
+
+#### 基于Java代码配置
+
