@@ -91,7 +91,9 @@ IoC的目的是降低对象之间的直接耦合
 
 - 必须有默认构造函数
 
+### bean对象的生命周期
 
+![image-20210619231114391](Java.assets/image-20210619231114391.png)
 
 ## pom.xml配置文件
 
@@ -286,6 +288,28 @@ for(String beanName:beanNames){
 - bean scope配置将影响容器内对象的数量
 - bean scope默认值singleton(单例），指全局共享同
   一个对象实例
+
+
+
+**scope属性清单**
+
+singleton：单例模式（默认模式）
+
+prototype：多例，每次使用时创建一个实例
+
+![image-20210619225106432](Java.assets/image-20210619225106432.png)
+
+上图情况中，左侧三个bean注入的userDao都是同一个实例。
+
+singleton在容器是**单例多线程**的，但是存在**线程安全风险**。
+
+
+
+![image-20210619225349281](Java.assets/image-20210619225349281.png)
+
+![image-20210619225509625](Java.assets/image-20210619225509625.png)
+
+
 
 #### 基于注解配置
 

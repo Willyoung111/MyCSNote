@@ -1711,6 +1711,134 @@ Given a string s, find the longest palindromic substring in s. You may assume th
 
 字符串s2="cbbd"，长度为n=4，下标c2范围为[0,n-1]，扩充之后为#c#b#b#d#。
 
+# 状态机
+
+## 65 有效数字
+
+![image-20210618112112674](Algorithm.assets/image-20210618112112674.png)
+
+一个有效的数字包含以下状态：
+
+1. 符号位
+2. 整数部分
+3. 左侧有整数的小数点
+4. 左侧无整数的小数点（小数点左右至少有一侧是数字）
+5. 小数部分
+6. 字符e
+7. 指数部分符号位
+8. 指数部分的整数部分
+
+状态机
+
+![fig1](Algorithm.assets/1.png)
+
+```cpp
+class Solution {
+public:
+    enum State {
+        STATE_INITIAL,
+        STATE_INT_SIGN,
+        STATE_INTEGER,
+        STATE_POINT,
+        STATE_POINT_WITHOUT_INT,
+        STATE_FRACTION,
+        STATE_EXP,
+        STATE_EXP_SIGN,
+        STATE_EXP_NUMBER,
+        STATE_END
+    };
+
+    enum CharType {
+        CHAR_NUMBER,
+        CHAR_EXP,
+        CHAR_POINT,
+        CHAR_SIGN,
+        CHAR_ILLEGAL
+    };
+
+    CharType toCharType(char ch) {
+        if (ch >= '0' && ch <= '9') {
+            return CHAR_NUMBER;
+        } else if (ch == 'e' || ch == 'E') {
+            return CHAR_EXP;
+        } else if (ch == '.') {
+            return CHAR_POINT;
+        } else if (ch == '+' || ch == '-') {
+            return CHAR_SIGN;
+        } else {
+            return CHAR_ILLEGAL;
+        }
+    }
+
+    bool isNumber(string s) {
+        unordered_map<State, unordered_map<CharType, State>> transfer{
+            {
+                STATE_INITIAL, {
+                    {CHAR_NUMBER, STATE_INTEGER},
+                    {CHAR_POINT, STATE_POINT_WITHOUT_INT},
+                    {CHAR_SIGN, STATE_INT_SIGN}
+                }
+            }, {
+                STATE_INT_SIGN, {
+                    {CHAR_NUMBER, STATE_INTEGER},
+                    {CHAR_POINT, STATE_POINT_WITHOUT_INT}
+                }
+            }, {
+                STATE_INTEGER, {
+                    {CHAR_NUMBER, STATE_INTEGER},
+                    {CHAR_EXP, STATE_EXP},
+                    {CHAR_POINT, STATE_POINT}
+                }
+            }, {
+                STATE_POINT, {
+                    {CHAR_NUMBER, STATE_FRACTION},
+                    {CHAR_EXP, STATE_EXP}
+                }
+            }, {
+                STATE_POINT_WITHOUT_INT, {
+                    {CHAR_NUMBER, STATE_FRACTION}
+                }
+            }, {
+                STATE_FRACTION,
+                {
+                    {CHAR_NUMBER, STATE_FRACTION},
+                    {CHAR_EXP, STATE_EXP}
+                }
+            }, {
+                STATE_EXP,
+                {
+                    {CHAR_NUMBER, STATE_EXP_NUMBER},
+                    {CHAR_SIGN, STATE_EXP_SIGN}
+                }
+            }, {
+                STATE_EXP_SIGN, {
+                    {CHAR_NUMBER, STATE_EXP_NUMBER}
+                }
+            }, {
+                STATE_EXP_NUMBER, {
+                    {CHAR_NUMBER, STATE_EXP_NUMBER}
+                }
+            }
+        };
+
+        int len = s.length();
+        State st = STATE_INITIAL;
+
+        for (int i = 0; i < len; i++) {
+            CharType typ = toCharType(s[i]);
+            if (transfer[st].find(typ) == transfer[st].end()) {
+                return false;
+            } else {
+                st = transfer[st][typ];
+            }
+        }
+        return st == STATE_INTEGER || st == STATE_POINT || st == STATE_FRACTION || st == STATE_EXP_NUMBER || st == STATE_END;
+    }
+};
+```
+
+
+
 # 图
 
 ## 连通分量

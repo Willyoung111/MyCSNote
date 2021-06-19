@@ -106,10 +106,25 @@ git branch -m <new branch name>
 
 
 
-添加代理
+# 添加代理
 
 ```
 git config --global http.proxy http://127.0.0.1:7890
 git config --global https.proxy https://127.0.0.1:7890
 ```
 
+
+
+# ignore更新
+
+```
+git rm -r --cached . 
+git add . 
+git commit -m 'update .gitignore'
+```
+
+
+
+# 撤销push，版本回退
+
+git reset --soft
