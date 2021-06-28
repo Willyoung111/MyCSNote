@@ -1,17 +1,52 @@
 # Java语言基础
 
-## Java 局部变量
+##  局部变量
 
 - 局部变量没有默认值，所以局部变量被声明后，必须经过初始化，才可以使用。
 
-## Java修饰符
+## 修饰符
 
 像其他语言一样，Java可以使用修饰符来修饰类中方法和属性。主要有两类修饰符：
 
 - 访问控制修饰符 : default, public , protected, private
 - 非访问控制修饰符 : final, abstract, static, synchronized
 
+## 关键字
 
+##### transient
+
+变量修饰符，用于在序列化过程中忽略该变量，在反序列化过程中transient变量将被设为初始值。
+
+##### instanceof
+
+二元操作符，用于判断左侧对象是否是右侧类的实例
+
+```java
+public static void displayObjectClass(Object o){
+	if(o instanceof Vector)
+		sout();
+    else if(o instanceof ArrayList)
+        sout();
+    else
+        sout();
+}
+```
+
+##### volatile
+
+
+
+## 参数传递
+
+三种参数传递方法：
+
+- 传值调用
+- 传引用调用
+- 传共享对象调用
+
+Java的参数传递本质是**传共享对象调用**，也可以理解为把对象地址作为值进行传值调用。传参过程中会发生求值、拷贝、传递的过程。而这个过程的主体是对象的内存地址。
+
+Java的**参数传递不是引用调用**，传值保证作为参数传入的对象在返回是依然指向原对象，但是函数内部可以对该地址指向对象的内部进行修改。
 
 # Spring
 
