@@ -291,6 +291,10 @@ CDM(Code Division Mulitiplexing)
 
 ## IP协议
 
+IP协议是一种无连接不可靠的分组传送服务的协议
+
+IP协议是dian-点线路的网络层通信协议
+
 ### IP头
 
 ![image-20210225123021825](ComputerNetwork.assets/image-20210225123021825.png)
@@ -323,9 +327,7 @@ CDM(Code Division Mulitiplexing)
 
 
 
-## NAT
 
-网络地址转换协议，用于本地网络和公网的数据传输
 
 ## 路由器
 

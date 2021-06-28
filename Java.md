@@ -11,7 +11,9 @@
 - 访问控制修饰符 : default, public , protected, private
 - 非访问控制修饰符 : final, abstract, static, synchronized
 
+## Java注解（Annotation）
 ## 关键字
+
 
 ##### transient
 
@@ -118,19 +120,15 @@ IoC的目的是降低对象之间的直接耦合
 
 ![image-20210616161336580](Java.assets/image-20210616161336580.png)
 
-## Spring AOP 面向切面编程
-
-
-
-## XML管理对象（Bean）
-
-- 必须有默认构造函数
+## 
 
 ### bean对象的生命周期
 
 ![image-20210619231114391](Java.assets/image-20210619231114391.png)
 
-## pom.xml配置文件
+![image-20210620180248110](Java.assets/image-20210620180248110.png)
+
+### pom.xml配置文件
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -348,5 +346,137 @@ singleton在容器是**单例多线程**的，但是存在**线程安全风险**
 
 #### 基于注解配置
 
-#### 基于Java代码配置
+注解：Annotation
 
+**组件类型注解**
+
+```xml
+<!--XML配置开启组件扫描，才能使用注解-->
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.imooc"/>
+
+</beans>
+```
+
+
+
+- @Component：组件注解，通过注解，被该注解描述的类将被IoC容器管理并实例化
+- @Controller：语义注解，说明当前类是MVC应用中的控制器类
+- @Service：语义注解，说明当前类是Service业务服务类
+- @Repository：语义注解，说明当前类用于业务持久层，通常描述对应Dao类
+
+
+
+**自动装配注解**
+
+![image-20210620132735407](Java.assets/image-20210620132735407.png)
+
+  @Autowired 按类型注入，不推荐使用
+
+```java
+package com.imooc.spring.ioc.service;
+
+import com.imooc.spring.ioc.dao.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+    public UserService() {
+        System.out.println("creating UserService:" + this);
+    }
+
+    @Autowired
+    //Spring IoC容器会自动通过反射技术将属性private修饰符改为public，直接进行赋值
+    //不再执行set方法
+    private UserDao udao;
+
+    public UserDao getUdao() {
+        return udao;
+    }
+
+    @Autowired
+    //如果装配注解放在set方法上，则自动按类型/名称对set方法参数进行注入
+    public void setUdao(UserDao udao) {
+        System.out.println("setUdao:" + udao);
+        this.udao = udao;
+    }
+}
+```
+
+
+
+@Resource
+
+1. 设置name属性，则按name在IoC容器中将bean注入
+2. 未设置name属性
+   1. 以属性名作为bean name在IoC容器中匹配bean，如有匹配则注入
+   2. 按属性名未匹配，则按类型进行匹配，同@Autowired，需加入@Primary解决类型冲突
+
+**元数据注解**
+
+![image-20210620134112035](Java.assets/image-20210620134112035.png) 
+
+1. 创建配置文件
+2. 在xml中加载配置文件
+3. 在Value注解中加载键值对
+
+
+
+注解需要修改源代码，但是配置方便，避开了繁琐的xml文件配置
+
+#### 基于Java Config代码配置
+
+- 完全摆脱XML的束缚，使用独立java类管理对象与依赖
+- 注解配置相对分散，利用Java Config可对配置集中管理
+- 可以在编译时进行依赖检查，不容易出错
+
+![image-20210620140742745](Java.assets/image-20210620140742745.png)
+
+```java
+package com.imooc.spring.ioc;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class SpringApplication {
+    public static void main(String[] args) {
+        //基于Java Config配置IoC容器的初始化
+        ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+
+        String[] ids = context.getBeanDefinitionNames();
+        for(String id : ids){
+            System.out.println(id + ":" + context.getBean(id));
+        }
+    }
+}
+
+```
+
+## Spring Test
+
+![image-20210620142914404](Java.assets/image-20210620142914404.png)
+
+## Spring AOP 面向切面编程
+
+Aspect Oriented Programming
+
+Spring AOP 是基于 AOP 编程模式的一个框架，它的使用有效减少了系统间的重复代码，达到了模块间的松耦合目的。
+
+| 名称                | 说明                                                         |
+| ------------------- | ------------------------------------------------------------ |
+| Joinpoint（连接点） | 指那些被拦截到的点，在 Spring 中，可以被动态代理拦截目标类的方法。 |
+| Pointcut（切入点）  | 指要对哪些 Joinpoint 进行拦截，即被拦截的连接点。            |
+| Advice（通知）      | 指拦截到 Joinpoint 之后要做的事情，即对切入点增强的内容。    |
+| Target（目标）      | 指代理的目标对象。                                           |
+| Weaving（植入）     | 指把增强代码应用到目标上，生成代理对象的过程。               |
+| Proxy（代理）       | 指生成的代理对象。                                           |
+| Aspect（切面）      | 切入点和通知的结合。                                         |
