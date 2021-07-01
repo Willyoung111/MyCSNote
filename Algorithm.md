@@ -1119,7 +1119,51 @@ void BFS()
 
 # 深度优先搜索
 
+![image-20210701201633472](C:\Users\yuweiyong\AppData\Roaming\Typora\typora-user-images\image-20210701201633472.png)
+
+典型的深搜，固定深度为k，通过输入建图。
+
+```cpp
+public:
+    int result = 0;
+    void dfs(vector<vector<int>> &pic, int depth, int k, int n, int no)
+    {
+        // cout << depth << ", " << no << endl; 
+        if(depth == k)
+        {
+            if(no == n-1)
+                result++;
+            return;
+        }
+
+        for(int i = 0; i < n; i++)
+        {
+            if(pic[no][i])
+                dfs(pic, depth+1, k, n, i);
+        }
+        return;
+    }
+
+    int numWays(int n, vector<vector<int>>& relation, int k) {
+        //图论，深度优先搜索，深度k时停止
+        vector<vector<int>> pic(n, vector<int>(n,0));
+        //构造二维数组
+        for(auto &re : relation)
+        {
+            pic[re[0]][re[1]] = 1;
+        }
+
+        dfs(pic, 0, k, n, 0);
+        return result;
+    }
+};
+```
+
+
+
 # 二分查找
+
+
 
 278 第一个错误的版本
 
