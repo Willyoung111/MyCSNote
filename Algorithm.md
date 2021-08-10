@@ -470,6 +470,23 @@ public:
 
 `dp[i]`表示金额之和为x的组合数，目标为求`dp[amount]`
 
+```cpp
+
+class Solution {
+public:
+    int change(int amount, vector<int>& coins) {
+        vector<int> dp(amount + 1);
+        dp[0] = 1;
+        for (int& coin : coins) {
+            for (int i = coin; i <= amount; i++) {
+                dp[i] += dp[i - coin];
+            }
+        }
+        return dp[amount];
+    }
+};
+```
+
 
 
 ## 879 盈利计划
@@ -700,7 +717,7 @@ dp[i][j], j<stones[i] \\
 dp[i][j] \vee dp[i][j-stomes[i]], j >= stones[i] \\
 \end{cases}
 $$
-求出$ dp[n][] $后，所有为真的$ dp[n][j] $中，最大的 j 即为$ neg $能取到的最大值。代入$ sum−2⋅neg $中即得到最后一块石头的最小重量。
+求出` dp[n][] `后，所有为真的` dp[n][j] `中，最大的 j 即为` neg `能取到的最大值。代入` sum−2⋅neg `中即得到最后一块石头的最小重量。
 
 
 
@@ -822,6 +839,8 @@ https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
 
 
 ## 146. LRU实现 hash+双向链表
+
+Least Recently Used
 
 最近最少使用缓存
 
@@ -1167,7 +1186,7 @@ public:
 
 278 第一个错误的版本
 
-![image-20210613180004293](Algorithm.assets/image-20210613180004293.png)
+<img src="Algorithm.assets/image-20210613180004293.png" alt="image-20210613180004293" style="zoom:50%;" />
 
 ```cpp
 // The API isBadVersion is defined for you.
@@ -1342,12 +1361,19 @@ void BubbleSort(int array[], int size)
 {
     for(int i=0;i<size;i++)
     {
+        //通过标记位来优化最优时间复杂度为O(N)
+        bool skip = true;
         for(int j=size-1;j>i;j--)
         {
             if(array[j]<array[j-1])
             {
                 mySwap(&array[j], &array[j-1]);
+                skip = false;
             }
+        }
+        
+        if(skip){
+            return;
         }
     }
 }
@@ -1394,6 +1420,8 @@ void SelectSort(int array[], int size)
 ## 插入排序
 
 插入排序的基本思想是将一个记录插入到已经排序好的有序表中，从而得到一个新的记录数加1的有序表。
+
+最优时间复杂度`O(N)`，数组已排好序
 
 **算法描述**
 
@@ -1500,7 +1528,41 @@ void mergeSort(int arr[], int start, int end) {
 
 ## 快速排序
 
+本质是分治算法，时间复杂度
+
 ![img](Algorithm.assets/849589-20171015230936371-1413523412.gif)
+
+### 1. 算法步骤
+
+1. 从数列中挑出一个元素，称为 "基准"（pivot）;
+2. 重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；
+3. 递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序；
+
+```cpp
+void QuickSort(vector<int> arr, int left, int right){
+    if(left < right){
+        int pivot = Paritition(arr, left, right);
+        QuickSort(arr, left, pivot - 1);
+        QuickSort(arr, pivot + 1, right);
+    }
+}
+
+int Paritition(vector<int> arr, int left, right){
+    int pivot = arr[left];
+    while(left < right){
+        while(left < right && arr[right] >= pivot){
+            right--;
+        }
+        arr[left] = arr[right];
+        while(left < right && arr[left] <= pivot){
+            left++;
+        }
+        arr[right] = arr[left];
+    }
+    arr[left] = pivot;
+    return left;
+}
+```
 
 
 
@@ -1657,7 +1719,7 @@ k路归并方法，**败者树**
 
 # 数组
 
-### **大数乘法**
+#### **大数乘法**
 
 开数组，A[i]和B[j]的结果放在result[i+j]的位置，最后处理进位
 
@@ -2075,4 +2137,6 @@ public:
 ```
 
 
+
+最短路径 dijkstra算法
 

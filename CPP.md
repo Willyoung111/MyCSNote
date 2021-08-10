@@ -8,7 +8,7 @@ main函数执行之前，主要就是初始化系统相关资源：
     
      2. 初始化static静态和global全局变量，即data段的内容
     
-     3. 将未初始化部分的全局变量赋初值：数值型short，int，long等为0，bool为FALSE，指针为NULL，等等，即.bss段的内容     
+     3. 将未初始化部分的全局变量赋初值：数值型short，int，long等为0，bool为FALSE，指针为NULL，等等，即.bss段的内容
     
      4. 全局对象初始化，在main之前调用构造函数
     
@@ -22,6 +22,7 @@ main函数执行之后：
      2. 可以用atexit 注册一个函数，它会在main 之后执行; 
 
  
+
 
 
 `__attribute__((constructor)) `  用这个修饰函数，会让函数在main调用之前被执行
