@@ -1318,6 +1318,50 @@ public:
 
 
 
+## 25 K个一组翻转链表
+
+```cpp
+std::pair<ListNode*, ListNode*> reverse(ListNode* head, ListNode* tail){
+    ListNode* pre = tail->next;
+    ListNode* p = head;
+    while(pre != tail){
+        ListNode* nex = p->next;
+        p->next = pre;
+        pre = p;
+        p = nex;
+    }
+	return {tail, head};    
+}
+
+ListNode* reverseKGroup(ListNode* head, int k){
+    std::shared_ptr<ListNode> hairPtr = std::make_shared<ListNode>(0);
+    ListNode* hair = hairPtr.get();
+    hair->next = head;
+    ListNode* pre = hair;
+    
+    while(head){
+        ListNode* tail = pre;
+        for(int i = 0; i < k; i++){
+            tail = tail->next;
+            if(!tail){
+                return hair->next;
+            }
+        }
+        
+        ListNode* nex = tail->next;
+        
+        auto result = reverse(head, tail);
+        head = result.first;
+        tail = result.second;
+        pre->next = head;
+        tail->next = nex;
+        pre = tail;
+        head = tail->next;
+    }
+```
+
+
+
 # 位运算
 
 # 排序
@@ -1719,7 +1763,7 @@ k路归并方法，**败者树**
 
 # 数组
 
-#### **大数乘法**
+### **大数乘法**
 
 开数组，A[i]和B[j]的结果放在result[i+j]的位置，最后处理进位
 
@@ -1788,6 +1832,57 @@ int main()
     
 }
 
+```
+
+### TOP K
+
+```cpp
+#include<queue>
+priority_queue<Type, Container, Functional>;
+
+auto cmp = [](const Type& e1, const Type& e2)
+{
+    return e1.first < e2.first; //小顶堆
+};
+
+priority_queue<Type, vector<Type>, delctype(cmp)> queue{cmp};
+```
+
+
+
+```cpp
+class Solution {
+public:
+    static bool cmp(pair<int, int>& m, pair<int, int>& n) {
+        return m.second > n.second;
+    }
+
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int> occurrences;
+        for (auto& v : nums) {
+            occurrences[v]++;
+        }
+
+        // pair 的第一个元素代表数组的值，第二个元素代表了该值出现的次数
+        priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&cmp)> q(cmp);
+        for (auto& [num, count] : occurrences) {
+            if (q.size() == k) {
+                if (q.top().second < count) {
+                    q.pop();
+                    q.emplace(num, count);
+                }
+            } else {
+                q.emplace(num, count);
+            }
+        }
+        vector<int> ret;
+        while (!q.empty()) {
+            ret.emplace_back(q.top().first);
+            q.pop();
+        }
+        return ret;
+    }
+};
 ```
 
 
