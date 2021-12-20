@@ -65,7 +65,7 @@ Java的**参数传递不是引用调用**，传值保证作为参数传入的对
 
 
 
-![Spring的体系结构](Java.assets/5-1Z606104H1294.gif)
+![Spring的体系结构](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/5-1Z606104H1294.gif)
 
 #### 1. Data Access/Integration（数据访问／集成）
 
@@ -118,15 +118,15 @@ DI在Java中通过**反射**技术实现对象注入（Injection）
 
 IoC的目的是降低对象之间的直接耦合
 
-![image-20210616161336580](Java.assets/image-20210616161336580.png)
+![image-20210616161336580](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210616161336580.png)
 
 ## 
 
 ### bean对象的生命周期
 
-![image-20210619231114391](Java.assets/image-20210619231114391.png)
+![image-20210619231114391](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210619231114391.png)
 
-![image-20210620180248110](Java.assets/image-20210620180248110.png)
+![image-20210620180248110](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210620180248110.png)
 
 ### pom.xml配置文件
 
@@ -253,11 +253,11 @@ applicationContext.xml
 ApplicationContext context = new ClassPathXmlApplcationContext("classpath:applicationContext.xml");
 ```
 
-![image-20210617110219662](Java.assets/image-20210617110219662.png)
+![image-20210617110219662](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210617110219662.png)
 
 classpath指编译后的运行目录target下的classes
 
-![image-20210617110326009](Java.assets/image-20210617110326009.png)
+![image-20210617110326009](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210617110326009.png)
 
 ##### 注入集合对象
 
@@ -330,7 +330,7 @@ singleton：单例模式（默认模式）
 
 prototype：多例，每次使用时创建一个实例
 
-![image-20210619225106432](Java.assets/image-20210619225106432.png)
+![image-20210619225106432](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210619225106432.png)
 
 上图情况中，左侧三个bean注入的userDao都是同一个实例。
 
@@ -338,9 +338,9 @@ singleton在容器是**单例多线程**的，但是存在**线程安全风险**
 
 
 
-![image-20210619225349281](Java.assets/image-20210619225349281.png)
+![image-20210619225349281](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210619225349281.png)
 
-![image-20210619225509625](Java.assets/image-20210619225509625.png)
+![image-20210619225509625](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210619225509625.png)
 
 
 
@@ -377,7 +377,7 @@ singleton在容器是**单例多线程**的，但是存在**线程安全风险**
 
 **自动装配注解**
 
-![image-20210620132735407](Java.assets/image-20210620132735407.png)
+![image-20210620132735407](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210620132735407.png)
 
   @Autowired 按类型注入，不推荐使用
 
@@ -423,7 +423,7 @@ public class UserService {
 
 **元数据注解**
 
-![image-20210620134112035](Java.assets/image-20210620134112035.png) 
+![image-20210620134112035](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210620134112035.png) 
 
 1. 创建配置文件
 2. 在xml中加载配置文件
@@ -439,7 +439,7 @@ public class UserService {
 - 注解配置相对分散，利用Java Config可对配置集中管理
 - 可以在编译时进行依赖检查，不容易出错
 
-![image-20210620140742745](Java.assets/image-20210620140742745.png)
+![image-20210620140742745](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210620140742745.png)
 
 ```java
 package com.imooc.spring.ioc;

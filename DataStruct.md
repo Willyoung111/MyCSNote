@@ -1,3 +1,7 @@
+---
+typora-copy-images-to: upload
+---
+
 [TOC]
 
 
@@ -284,20 +288,20 @@ head = node;
 
 第i个节点的父亲节点下标为`(i-1) / 2`， 其左右子节点下标分别为`2*i + 1`, `2*i+2`。
 
-<img src="DataStruct.assets/image-20210203160323576.png" alt="image-20210203160323576"  />
+<img src="https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210203160323576.png" alt="image-20210203160323576"  />
 
 **堆的一个特性，最后一个有子树的点为`n/2`向下取整**
 
 1. 如何由一个无序序列建成呢个一个堆？
 2. 如何在输出堆顶元素后，调整剩余元素成为一个新的堆？
 
-<img src="DataStruct.assets/image-20210203163143119.png" alt="image-20210203163143119" style="zoom:50%;" />
+<img src="https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210203163143119.png" alt="image-20210203163143119" style="zoom:50%;" />
 
 第二的问题：对一个小顶堆来说，堆顶元素是堆中的最小元素，将堆顶元素和完全二叉树中的最后一个元素交换位置。堆结构被破坏，进行一个自上向下的调整，将根节点与左右孩子节点比较，取较小值与根节点交换，并以交换的孩子节点作为根节点，继续进行交换，直至到达叶子节点。这个过程称为”**筛选**“。
 
 从无序序列建成一个堆，就是从**最后一个非叶子节点**`n/2 - 1`开始筛选到第0个元素
 
-![image-20210203165349107](DataStruct.assets/image-20210203165349107.png)
+![image-20210203165349107](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210203165349107.png)
 
 
 
@@ -376,7 +380,7 @@ void HeapSort(vector<int> &a)
 
 树表示由边连接的节点。我们将专门讨论二叉树或二叉搜索树。二叉树是一种用于数据存储目的的特殊数据结构。二叉树有一个特殊的条件，即每个节点最多可以有两个子节点。二叉树兼具有序数组和链表的优点，因为搜索和排序数组一样快，插入或删除操作和链表一样快。
 
-![image-20201209105359988](DataStruct.assets/image-20201209105359988.png)
+![image-20201209105359988](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20201209105359988.png)
 
 
 
@@ -384,11 +388,11 @@ void HeapSort(vector<int> &a)
 
 两种定义：国内认为，满二叉树的每一层节点数都为最大值，通过层序遍历即可判断
 
-![满2 叉树节点数](DataStruct.assets/8ad4b31c8701a18be06a847b942f07082838fe05)
+![满2 叉树节点数](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/8ad4b31c8701a18be06a847b942f07082838fe05)
 
 国外认为：满二叉树的每一个节点的度为0或2
 
-![图3 二叉树](DataStruct.assets/83025aafa40f4bfbbb260360094f78f0f736180b)
+![图3 二叉树](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/83025aafa40f4bfbbb260360094f78f0f736180b)
 
 通过在遍历时判断左右孩子节点即可判断。
 
@@ -396,7 +400,7 @@ void HeapSort(vector<int> &a)
 
 若设二叉树的深度为h，除第 h 层外，其它各层 (1～h-1) 的节点数都达到最大个数(即1~h-1层为一个满二叉树)，第 h 层所有的节点都连续集中在最左边，这就是完全二叉树。
 
-![img](DataStruct.assets/20190426100435930.jpg)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/20190426100435930.jpg)
 
 ### 完全二叉树的判断方法
 
@@ -481,7 +485,7 @@ public:
 
 二叉搜索树表现出一种特殊的行为。**节点的左子节点的值必须小于其父节点的值，而右子节点的值必须大于其父节点的值。**
 
-![image-20201209105532371](DataStruct.assets/image-20201209105532371.png)
+![image-20201209105532371](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20201209105532371.png)
 
 在对二叉搜索树进行搜索时，其本质是一种二分查找，其时间复杂度为O(logN)
 
@@ -662,13 +666,13 @@ void PreorderTraversalLoop(TreeNode *root)
 
 AVL树是以其发明者Adelson, Velski & Landis的名字命名的，AVL树是高度平衡二叉搜索树。AVL树检查左子树和右子树的高度，**确保差异不大于1**。这种差异被称为**平衡因子**。
 
-![image-20201209110545972](DataStruct.assets/image-20201209110545972.png)
+![image-20201209110545972](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20201209110545972.png)
 
 
 
 以下三棵树中，第一棵树是平衡的，后两棵树是不平衡的
 
-![image-20201209112232304](DataStruct.assets/image-20201209112232304.png)
+![image-20201209112232304](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20201209112232304.png)
 
 在第二棵树中，C的左子树高为2，右子树高为0，所以差为2。在第三棵树中，A的右子树高度是2而左子树高度没有，所以它是0，差还是2。AVL树允许差异(平衡因子)仅为1。
 
@@ -684,7 +688,7 @@ BalanceFactor = height(left) - height(right)
 
 ## 红黑树 RB Tree
 
-![img](DataStruct.assets/251730074203156.jpg)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/251730074203156.jpg)
 
 红黑树的特性：
 
@@ -708,11 +712,11 @@ AVL 树是高度平衡的，频繁的插入和删除，会引起频繁的rebalan
 
 ## B树
 
-![image-20210225144022496](DataStruct.assets/image-20210225144022496.png)
+![image-20210225144022496](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210225144022496.png)
 
 根据磁盘查找的特性设计，磁盘有固定头盘和活动头盘，当想要在磁盘上读写某块数据时，需要3个步骤：
 
-![image-20210225150644141](DataStruct.assets/image-20210225150644141.png)
+![image-20210225150644141](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210225150644141.png)
 
 1. **移动活动头盘都指定柱面（耗时）**
 2. 固定头盘定位到指定磁道
@@ -757,11 +761,11 @@ B树的高度：设阶数为m，节点数为n，则B树的高度为
 $$
 h = 1 + log_{ceil[m/2]}{(N+1)/2}
 $$
-![image-20210225150319357](DataStruct.assets/image-20210225150319357.png)
+![image-20210225150319357](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210225150319357.png)
 
 ## B+树
 
-![img](DataStruct.assets/v2-5f069fd820637db1b877fdd6799a2b67_720w.jpg)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/v2-5f069fd820637db1b877fdd6799a2b67_720w.jpg)
 
 是B树的一种变形，有以下特点
 
@@ -784,5 +788,5 @@ $$
 
 ### 最短路径 Dijkstra算法
 
-![墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 ￼￼￼￼￼￼￼￼￼￼￼￼￼￼ ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼ ￼￼￼ ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼ ￼￼￼￼￼￼￼￼￼￼￼￼ ￼￼￼￼ ￼￼￼￼ ￼￼￼￼￼ ￼￼￼￼￼ ￼ ￼￼￼ ￼￼￼￼￼ ￼￼ ￼￼ ￼￼ 墨迹绘图 ](DataStruct.assets/clip_image001.png)
+![墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 墨迹绘图 ￼￼￼￼￼￼￼￼￼￼￼￼￼￼ ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼ ￼￼￼ ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼ ￼￼￼￼￼￼￼￼￼￼￼￼ ￼￼￼￼ ￼￼￼￼ ￼￼￼￼￼ ￼￼￼￼￼ ￼ ￼￼￼ ￼￼￼￼￼ ￼￼ ￼￼ ￼￼ 墨迹绘图 ](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/clip_image001.png)
 

@@ -29,7 +29,7 @@ clip < ~/.ssh/id_ed25519.pub
 
 出现这个问题的原因是像缓存区中提交文件时出现的
 
-![img](git.assets/20190901150758611.png)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/20190901150758611.png)
 
 原因：
 

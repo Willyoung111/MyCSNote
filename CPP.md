@@ -25,6 +25,7 @@ main函数执行之后：
 
 
 
+
 `__attribute__((constructor)) `  用这个修饰函数，会让函数在main调用之前被执行
 
 `__attribute__((destructor)) ` 用这个修饰函数，会让函数在main调用之后被执行
@@ -760,7 +761,7 @@ int main()
 
 # 面向对象
 
-![面向对象特征](CPP.assets/面向对象基本特征.png)
+![面向对象特征](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/面向对象基本特征.png)
 
 ## 类
 
@@ -820,13 +821,13 @@ class A
 
 虚函数表的指针位于对象实例中最前面的位置，用以保证正确获取虚函数的偏移量。
 
-![img](CPP.assets/o_Drawing4.jpg)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/o_Drawing4.jpg)
 
-![img](CPP.assets/o_vtable3.JPG)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/o_vtable3.JPG)
 
-![img](CPP.assets/o_Drawing2.jpg)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/o_Drawing2.jpg)
 
-![img](CPP.assets/o_vtable5.jpg)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/o_vtable5.jpg)
 
 # 虚析构函数
 
@@ -864,7 +865,7 @@ public:
 
 # 虚继承，菱形继承
 
-![img](CPP.assets/1023530-20171128220616940-689764561.png)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/1023530-20171128220616940-689764561.png)
 
 如果直接继承，会有**访问二义性**和**数据冗余**，可以通过作用域符指定访问对象`Angle.Brid::LifeMeaning`来消除，可以通过虚继承`class  LifePropagate1: virtual public Life `的方法来消除数据冗余。
 
@@ -1374,7 +1375,7 @@ Singleton* Singleton::getInstance()
 
 - **栈**：使用栈空间存储函数的返回地址、参数、局部变量、返回值
 
-![img](CPP.assets/311436_1552467921124_13956548C4BB199139A2744C39350272)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/311436_1552467921124_13956548C4BB199139A2744C39350272)
 
 
 

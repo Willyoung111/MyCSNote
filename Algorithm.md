@@ -202,7 +202,7 @@ bool f(i,j)
 
 ## 279 完全平方数
 
-![image-20210611103243306](Algorithm.assets/image-20210611103243306.png)
+![image-20210611103243306](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210611103243306.png)
 
 典型的动态规划问题
 
@@ -245,7 +245,7 @@ public:
 
 https://leetcode-cn.com/problems/coin-change/
 
-![image-20200308143927561](Algorithm.assets/image-20200308143927561.png)
+![image-20200308143927561](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20200308143927561.png)
 
 动态规划的解决方法：
 
@@ -274,7 +274,7 @@ $$
 count = -1, when\  n=0
 $$
 
-![img](Algorithm.assets/e0fd2252775b89649ceb6e867ff0e546ec77621edb566693482c8588a98066b8-file_1583404923188.jfif)
+![algo-322](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/e0fd2252775b89649ceb6e867ff0e546ec77621edb566693482c8588a98066b8-file_1583404923188.jfif)
 
 2、建立备忘录削减无效分支计算
 
@@ -317,13 +317,13 @@ public:
 
 动态规划的最终结果并不优秀，本题还有采用贪心算法+深度优先搜索（dfs）的更好解决方法。
 
-![image-20200308145502019](Algorithm.assets/image-20200308145502019.png)
+![image-20200308145502019](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20200308145502019.png)
 
 
 
 ## 474 ones and zeros
 
-![image-20210606180132845](Algorithm.assets/image-20210606180132845.png)
+![image-20210606180132845](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210606180132845.png)
 
 与背包问题十分相似，背包问题是一个二维的dp，包括物品和重量。该题则是有两个限制条件，是一个三维的dp
 
@@ -386,7 +386,7 @@ public:
 
 ## 494 Target Sum
 
-![image-20210607140027641](Algorithm.assets/image-20210607140027641.png)
+![image-20210607140027641](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210607140027641.png)
 
 这题可以用暴力的回溯法完成，其时间复杂度为`O(2^n)`
 
@@ -464,7 +464,7 @@ public:
 
 ## 518 零钱兑换Ⅱ
 
-![image-20210610112135000](Algorithm.assets/image-20210610112135000.png)
+![image-20210610112135000](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210610112135000.png)
 
 背包问题，区别在于每个元素可以选用无数次
 
@@ -491,7 +491,7 @@ public:
 
 ## 879 盈利计划
 
-![image-20210610104226893](Algorithm.assets/image-20210610104226893.png)
+![image-20210610104226893](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210610104226893.png)
 
 背包问题，三维dp
 
@@ -692,7 +692,7 @@ $dp[days[i]] = min(dp[days[i-1]] + costs[0], dp[days[i]-7] + costs[1], dp[days[i
 
 ## 1049 Last Stone Weight Ⅱ
 
-![image-20210608104030819](Algorithm.assets/image-20210608104030819.png)
+![image-20210608104030819](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210608104030819.png)
 
 转化为背包问题
 
@@ -772,7 +772,7 @@ public:
 
 ## 295、数据流的中位数
 
-<img src="Algorithm.assets/image-20210204150025117.png" alt="image-20210204150025117" style="zoom:50%;" />
+<img src="https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210204150025117.png" alt="image-20210204150025117" style="zoom:50%;" />
 
 ```c++
 class MedianFinder {
@@ -989,7 +989,7 @@ private:
 
 ## 525 连续数组
 
-![image-20210603102054150](Algorithm.assets/image-20210603102054150.png)
+![image-20210603102054150](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210603102054150.png)
 
 
 
@@ -1039,7 +1039,7 @@ public:
 
 ## 160 相交链表
 
-![image-20210604102640727](Algorithm.assets/image-20210604102640727.png)
+![image-20210604102640727](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210604102640727.png)
 
 假设链表A的不重复长度为a，链表B的不重复长度为b，两链表的重复长度为c，
 
@@ -1093,7 +1093,7 @@ public:
 
 # 广度优先搜索
 
-![广度优先搜索示意图](Algorithm.assets/20180805163135680.gif)
+![广度优先搜索示意图](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/20180805163135680.gif)
 
 广度优先搜索也成为宽度优先搜索，其策略为先生成的节点先扩张。在广度优先搜索中，树上的结点根据它们在树种的层次被搜索。
 
@@ -1186,7 +1186,7 @@ public:
 
 278 第一个错误的版本
 
-<img src="Algorithm.assets/image-20210613180004293.png" alt="image-20210613180004293" style="zoom:50%;" />
+<img src="https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210613180004293.png" alt="image-20210613180004293" style="zoom:50%;" />
 
 ```cpp
 // The API isBadVersion is defined for you.
@@ -1230,7 +1230,7 @@ public:
 
 ## 160 相交链表
 
-![image-20210604102640727](Algorithm.assets/image-20210604102640727.png)
+![image-20210604102640727](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210604102640727.png)
 
 时间复杂度O(n+m)
 
@@ -1284,7 +1284,7 @@ public:
 
 ## 203 Remove Linked List Elements
 
-![image-20210605105200261](Algorithm.assets/image-20210605105200261.png)
+![image-20210605105200261](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210605105200261.png)
 
 只需要注意当删除的结点是头结点的情况即可。可以通过创建一个伪头部来实现。
 
@@ -1425,7 +1425,7 @@ void BubbleSort(int array[], int size)
 //稳定性：稳定
 ```
 
-![img](Algorithm.assets/849589-20171015223238449-2146169197-1596191498895.gif)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/849589-20171015223238449-2146169197-1596191498895.gif)
 
 ## 选择排序
 
@@ -1459,7 +1459,7 @@ void SelectSort(int array[], int size)
 //稳定性：不稳定
 ```
 
-![img](Algorithm.assets/849589-20171015224719590-1433219824.gif)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/849589-20171015224719590-1433219824.gif)
 
 ## 插入排序
 
@@ -1504,7 +1504,7 @@ void InsertionSort(int array[],int size)
 }
 ```
 
-![img](Algorithm.assets/849589-20171015225645277-1151100000.gif)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/849589-20171015225645277-1151100000.gif)
 
 ## 归并排序
 
@@ -1518,7 +1518,7 @@ void InsertionSort(int array[],int size)
 2. 对这两个子序列分别采用归并排序；
 3. 将两个排序好的子序列合并成一个最终的排序序列。
 
-![img](Algorithm.assets/849589-20171015230557043-37375010.gif)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/849589-20171015230557043-37375010.gif)
 
 ```c
 #define ArrLen 20
@@ -1574,7 +1574,7 @@ void mergeSort(int arr[], int start, int end) {
 
 本质是分治算法，时间复杂度
 
-![img](Algorithm.assets/849589-20171015230936371-1413523412.gif)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/849589-20171015230936371-1413523412.gif)
 
 ### 1. 算法步骤
 
@@ -1753,7 +1753,7 @@ k路归并方法，**败者树**
 3. 胜者作为新的参赛者进入败者树的上一层参加比赛，直至最后得到ls[0]即为此次归并的冠军（最小\大值）
 4. 将ls[0]添加到已排序队列的末尾，从ls[0]所在的归并段选择新的元素进入叶子节点，并重新比赛。
 
-![image-20210312140443850](Algorithm.assets/image-20210312140443850.png)
+![image-20210312140443850](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210312140443850.png)
 
 ```c++
 
@@ -1916,7 +1916,7 @@ Given a string s, find the longest palindromic substring in s. You may assume th
 
 ## 65 有效数字
 
-![image-20210618112112674](Algorithm.assets/image-20210618112112674.png)
+![image-20210618112112674](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210618112112674.png)
 
 一个有效的数字包含以下状态：
 
@@ -1931,7 +1931,7 @@ Given a string s, find the longest palindromic substring in s. You may assume th
 
 状态机
 
-![fig1](Algorithm.assets/1.png)
+![fig1](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/1.png)
 
 ```cpp
 class Solution {
