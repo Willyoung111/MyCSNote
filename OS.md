@@ -21,13 +21,13 @@ linux> gcc -m64 prog.c
 
 不同类型的C声明数据在32位机器和64位机器的字节数有所不同。
 
-![image-20191106155110292](OS.assets/image-20191106155110292.png)
+![image-20191106155110292](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20191106155110292.png)
 
 **小端法和大端法**
 
 在对一个对象的字节进行存储时，将最低有效字节放在最前面--小端法，将最高有效字节放在最前面--大端法。
 
-![image-20191106155558978](OS.assets/image-20191106155558978.png)
+![image-20191106155558978](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20191112154026054.png)
 
 大多数Intel兼容机只使用小端模式，许多ARM微处理器系统可以配置选择双端模式，而Android和IOS只能使用小端模式。
 
@@ -35,7 +35,7 @@ linux> gcc -m64 prog.c
 
 **练习题2.6**：int 类型 和 float 类型在存储中的形式
 
-<img src="OS.assets/image-20191112154026054.png" alt="image-20191112154026054"  />
+<img src="https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20191106155558978.png" alt="image-20191112154026054"  />
 
 
 
@@ -61,7 +61,7 @@ linux> gcc -m64 prog.c
 
 而对于32位长度的float类型，其存储格式为：1位符号位+8位指数位+23位尾数部分
 
-![img](OS.assets/20160904101057305.png) 
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/20160904101057305.png) 
 
 
 
@@ -89,7 +89,7 @@ float的存储原理是，将数字表示为 尾数*2^指数的形式。
 gcc -0g -o prog mian.c sum.c
 ```
 
-![image-20200103162732893](OS.assets/image-20200103162732893.png)
+![image-20200103162732893](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/clip_image001.png)
 
 1. 驱动程序（GCC）首先运行**C预处理器(cpp)**，将mian.c文件翻译成一个ASCII码的中间文件main.i
 
@@ -158,7 +158,7 @@ gcc -0g -o prog mian.c sum.c
 
 一个典型的ELF可重定位目标文件的格式。
 
-![ELF格式](OS.assets/clip_image001.png)
+![ELF格式](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20200103162732893.png)
 
 - ELF头：以16字节序列开始，该序列描述了生成该文件的系统的字的大小（32、64）和字节顺序（大端、小端）。剩下的部分包含帮助链接器语法**分析和解释目标文件**的信息。其中包括ELF
 
@@ -388,7 +388,7 @@ linux> gcc -static -o prog2c main2.o -L. -lvector
 
 -L.表示链接器在当前目录查找库，-lvector是库的缩写。
 
-![与静态库的链接](OS.assets/image-20200108112437253.png)
+![与静态库的链接](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20201123155229057.png)
 
 ### 链接器如何使用静态库来解析引用
 
@@ -411,7 +411,7 @@ linux> gcc -static -o prog2c main2.o -L. -lvector
 
 每个Linux程序都有一个运行时内存映像，如图所示。
 
-![runtime RAM](OS.assets/image-20200605213533964.png)
+![runtime RAM](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20200108112437253.png)
 
 在Linux x86-64系统中，**代码段**总是从地址0x400000处开始，后面跟随**数据段**。运行时**堆**在数据段之后，并且通过malloc/new等用户分配内存方法向上增长。堆后的区域是为**共享库**保留的内存区域。**用户栈**总是从最大的合法用户地址开始（2^48-1），并向较小的内存地址增长。栈上的区域是为**内核**中的代码和数据保留的。
 
@@ -472,13 +472,13 @@ linux> gcc -static -o prog2c main2.o -L. -lvector
 
 计算机系统的主存被组织成一个由M个连续的字节大小的单元组成数组。每个字节都有唯一的**物理地址Physical Address，PA**。用物理地址寻址的方法称为**物理寻址physical addressing**。
 
-![image-20201123155229057](OS.assets/image-20201123155229057.png)
+![image-20201123155229057](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20201123155506353.png)
 
 早期的pc，现在的一些数字信号处理器，嵌入式微控制器以及Cray超级计算机这样的系统仍然使用这种寻址方式。在涉及到操作系统以及多进程在共享内存方面的内容时，这种寻址方式显的效率低下且容易出错。
 
 ## 虚拟内存和虚拟地址
 
-![image-20201123155506353](OS.assets/image-20201123155506353.png)
+![image-20201123155506353](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210224141650018.png)
 
 使用虚拟寻址时，CPU通过生成一个虚拟地址来访问内存，这个虚拟地址在被送到内存之前先通过一定的方式转换称为适当的物理地址。将一个虚拟地址转换为物理地址的任务叫做**地址翻译address translation**。虚拟地址通过CPU芯片上的**内存管理单元Memory Management Unit**进行地址翻译
 
@@ -573,7 +573,7 @@ DRAM的速度比SRAM大概要慢10倍，而磁盘的速度要比DRAM慢大概100
 
 ### 页表寻址
 
-![image-20210224141650018](OS.assets/image-20210224141650018.png)
+![image-20210224141650018](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/AryWDI.png)
 
 在页式内存管理中，内存被分成固定长度的一个个页片。操作系统为每个进程维护了一个**从虚拟地址到物理地址的映射关系的数据结构**，即页表。
 
@@ -729,9 +729,9 @@ pthread_atfork()在fork()之前调用，当调用fork时，内部创建子进程
 
 ## 进程状态的切换
 
-![img](OS.assets/AryWDI.png)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20200605213533964.png)
 
-![img](OS.assets/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f50726f6365737353746174652e706e67)
+![img](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f50726f6365737353746174652e706e67)
 
 按进程在执行过程中的不同情况至少要定义三种状态：
 
@@ -1436,7 +1436,7 @@ int poll(struct pollfd *fds, nfds_t nfds, int timeout);
 
 用户通过设置events告诉内核我们关注什么，内核通过设置revents说明该描述符发生的事件
 
-<img src="OS.assets/20150617160602775" alt="在这里插入图片描述" style="zoom: 80%;" />
+<img src="https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/20150617160602775" alt="在这里插入图片描述" style="zoom: 80%;" />
 
 ### epoll
 
@@ -1599,7 +1599,7 @@ Owner Group Other Users
 
 ```
 
-![image-20210308124508291](OS.assets/image-20210308124508291.png)
+![image-20210308124508291](https://ywy-imgsubmit.oss-cn-shanghai.aliyuncs.com/img/image-20210308124508291.png)
 
 #### find
 
